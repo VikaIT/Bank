@@ -1,0 +1,11 @@
+import time
+import sys
+
+s = socket.socket()
+port = 12345
+s.connect(('127.0.0.1', port))
+
+starttime = time.time()
+totaltime = round((time.time() - starttime), 2)
+print (totaltime.decode())
+s.close()
