@@ -1,6 +1,10 @@
 import socket
 import time
 
+starttime = time.time()
+totaltime = round((time.time() - starttime), 2)
+print("Total Time: "+str(totaltime))
+
 s = socket.socket()
 print ("Socketa successfully created")
 
@@ -26,6 +30,9 @@ while True:
 		balance = balanceFile.readline()
 		c.send(balance.encode())
 		
+		totaltime = round((time.time() - starttime), 2)
+		print("Total Time: "+str(totaltime))
+		
 		infoFile = open('info.txt', 'a')
 		named_tuple = time.localtime()
 		time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
@@ -36,6 +43,9 @@ while True:
 		balance = balanceFile.readline()
 		balance = balanceFile.readline()
 		c.send(balance.encode())
+		
+		totaltime = round((time.time() - starttime), 2)
+		print("Total Time: "+str(totaltime))
 		
 		infoFile = open('info.txt', 'a')
 		named_tuple = time.localtime()
@@ -49,12 +59,18 @@ while True:
 		c.send(balance.encode())
 		infoFile = open('info.txt', 'a')
 		
+		totaltime = round((time.time() - starttime), 2)
+		print("Total Time: "+str(totaltime))
+		
 		named_tuple = time.localtime()
 		time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
 		infoFile.write(str(addr) + ' ' + name + ' ' + balance + ' ' + str(time_string) + '\n')
 		infoFile.close()
 	else:
 		c.send('Erorr'.encode())
+		
+		totaltime = round((time.time() - starttime), 2)
+		print("Total Time: "+str(totaltime))
 		
 		infoFile = open('info.txt', 'a')
 		named_tuple = time.localtime()
@@ -63,3 +79,4 @@ while True:
 		infoFile.close()
 
 c.close()
+
